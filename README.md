@@ -1,6 +1,6 @@
-# CustomModal
+# custom-modal-library
 
-`CustomModal` est un composant React simple et réutilisable pour afficher des fenêtres modales dans vos applications. Il permet d'afficher du contenu dans une fenêtre modale superposée à l'application principale. Ce composant est conçu pour être léger et facile à intégrer, tout en offrant une personnalisation basique pour le style et le comportement de la modal.
+CustomModal est un composant React simple et réutilisable pour afficher des fenêtres modales dans vos applications. Il permet d'afficher du contenu dans une fenêtre modale superposée à l'application principale. Ce composant est conçu pour être léger et facile à intégrer, tout en offrant une personnalisation basique pour le style et le comportement de la modal.
 
 ## Table des matières
 
@@ -9,46 +9,30 @@
 - [Propriétés](#propriétés)
 - [Styles](#styles)
 - [Exemple](#exemple)
-- [Contribuer](#contribuer)
-- [Licence](#licence)
 
-## Installation
+### Installation
 
-Pour utiliser le composant `CustomModal`, vous devez d'abord l'installer via npm ou yarn, ou l'intégrer directement dans votre projet.
+Run the following command to install the library:
 
-### Via npm
-
-```bash
-npm install custom-modal
-```
-
-### Via yarn
-yarn add custom-modal
+```npm install custom-modal-library-corentin```
 
 ### Usage
 
-```import React, { useState } from 'react';
-import CustomModal from 'custom-modal';
-import './App.css';
+```javascript
+import { CustomModal } from 'custom-modal-library';
 
 const App = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
-
-    return (
-        <div className="app">
-            <button onClick={openModal}>Open Modal</button>
-            <CustomModal isOpen={isModalOpen} onRequestClose={closeModal}>
-                <h1>Hello, I am a Modal!</h1>
-                <p>This is some content inside the modal.</p>
-            </CustomModal>
-        </div>
-    );
+  const [isOpen, setIsOpen] = React.useState(false);
+  
+  return (
+    <>
+      <button onClick={() => setIsOpen(true)}>Open Modal</button>
+      <CustomModal isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
+        <h1>Modal Content</h1>
+      </CustomModal>
+    </>
+  );
 };
-
-export default App;
 ```
 
 ### Propriétés
@@ -57,7 +41,6 @@ Le composant CustomModal accepte les propriétés suivantes :
 isOpen (boolean): Indique si la modal doit être affichée ou non. Lorsque cette propriété est false, la modal n'est pas rendue.
 onRequestClose (function): Fonction de rappel appelée lorsque l'utilisateur demande de fermer la modal, généralement en cliquant sur le bouton de fermeture.
 children (ReactNode): Contenu à afficher à l'intérieur de la modal. Cela peut être n'importe quel élément React que vous souhaitez rendre à l'intérieur de la modal.
-
 
 ### Styles
 Le composant CustomModal utilise un fichier CSS pour le style. Assurez-vous d'inclure le fichier CSS dans votre projet pour appliquer les styles de la modal.
@@ -97,30 +80,12 @@ Exemple de fichier CSS (CustomModal.css)
     cursor: pointer;
 }
 ```
-
-### Contribuer
-Si vous souhaitez contribuer au projet, veuillez suivre les étapes suivantes :
-
-Forker le dépôt.
-Créer une nouvelle branche (git checkout -b feature/your-feature).
-Commencer à travailler sur votre fonctionnalité ou correction de bug.
-Soumettre une pull request avec une description détaillée de vos changements.
-
-### Instructions pour Upload sur GitHub
-
-1. **Créer le fichier** :
-   - Ouvrez un éditeur de texte comme Notepad, Visual Studio Code, ou tout autre éditeur Markdown.
-   - Collez le contenu ci-dessus dans un nouveau fichier.
-   - Enregistrez le fichier sous le nom `README.md`.
-
-2. **Ajouter au Dépôt GitHub** :
-   - Si vous avez déjà un dépôt GitHub, vous pouvez simplement ajouter ce fichier à votre dépôt.
-   - Utilisez les commandes Git suivantes pour ajouter et commettre le fichier :
-     ```bash
-     git add README.md
-     git commit -m "Add README for CustomModal component"
-     git push origin main
-     ```
-   - Assurez-vous que vous êtes dans le répertoire du dépôt local lorsque vous exécutez ces commandes.
-
-Avec ce README, vous fournirez une documentation claire et utile pour les utilisateurs de votre composant `CustomModal`. Assurez-vous de mettre à jour le chemin de l'image d'exemple et d'ajuster les instructions en fonction de vos besoins spécifiques.
+### Exemple
+```
+            <div className="form_footer">
+                <button onClick={saveEmployee} className="btn-save">Save</button>
+                <CustomModal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+                    <h2>Employee Created!</h2>
+                </CustomModal>
+            </div>
+            ```
